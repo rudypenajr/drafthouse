@@ -2,9 +2,9 @@
 - Run `parcel index.html --out-dir public -p 3000`
 
 ### To-Do:
-[x] Add basic validation to the form and on a successful submit display a success message to the user, no need to POST the data anywhere.
-[x] Make sure the page is responsive and looks great on all browser sizes, feel free to adjust the layout as needed for mobile.
-[x] Make sure the nav links scroll/link to the appropriate sections (Join->Waitlist, FAQ->FAQ, External Link->http://google.com or something).
+- [x] Add basic validation to the form and on a successful submit display a success message to the user, no need to POST the data anywhere.
+- [x] Make sure the page is responsive and looks great on all browser sizes, feel free to adjust the layout as needed for mobile.
+- [x] Make sure the nav links scroll/link to the appropriate sections (Join->Waitlist, FAQ->FAQ, External Link->http://google.com or something).
 
 ### Notes:
 Used [Skeleton](http://getskeleton.com/) as a base for this project.
