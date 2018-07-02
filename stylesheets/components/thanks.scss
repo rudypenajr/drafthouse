@@ -1,0 +1,30 @@
+.form__final {
+    padding-bottom: 90px;
+
+    h3 {
+        color: #141310;
+        font-family:'Futura W01';
+        font-size: 10px;
+        font-weight: bold;
+        line-height: 1.6;
+        letter-spacing: 1px;
+        opacity: 0.38;
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+.form__final {
+    .h1__welcome {
+        margin-top: 0;
+    }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+    .form__final {
+        .h1__welcome {
+            margin-top: 180px;
+        }
+    }   
+}

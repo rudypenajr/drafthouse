@@ -1,0 +1,137 @@
+.h1__welcome {
+  color: #f0b323;
+  display: block;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 1.5;  
+  margin-top: 180px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .banner {
+    .h1__welcome {
+      margin-top: 118px;
+    }
+  }
+}
+
+.banner {
+  color: #ffffff;
+  font-family: 'Futura W01';
+
+  .h1 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.33;
+    letter-spacing: 1px;
+    margin: 0 auto 64px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .banner {
+    .h1 {}
+  }
+}
+
+.banner {
+  .banner__card {
+    color: #fff;
+    display: block;
+  }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .banner {
+    .banner__card {
+      display: -ms-flex;
+      display: -webkit-flex;
+      display: flex;
+    }
+  }
+}
+
+.banner {
+  .banner__card > div {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .banner {
+    .banner__card > div {
+      padding: 0 10px 10px 10px;
+      width: 50%;
+    }
+  }
+}
+
+// .banner {
+//   .banner__card > div:first-child {
+//     margin-right: 20px;
+//   }
+// }
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .banner {
+    .banner__card > div:first-child {
+      margin-right: 20px;
+    }
+  }
+}
+
+.banner {
+  .banner__card__image img {
+    margin-right: 0;
+
+    height: auto;
+    width: 100%;
+  }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .banner {
+    .banner__card__image img {
+      float: right;
+      margin-right: 24px;
+  
+      height: auto;
+      max-height: 255px;
+      width: 100%;
+      max-width: 410px;
+    }
+  }
+}
+
+.banner {
+  .banner__card__desc {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.6;
+    margin-top: 20px;      
+  }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .banner {
+    .banner__card__desc {
+      margin-top: 10px;
+
+      p {
+        width: 80%;
+      }
+    }
+  }
+}

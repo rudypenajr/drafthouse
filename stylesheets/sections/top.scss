@@ -1,0 +1,16 @@
+.hero {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  background-image: linear-gradient(120deg, #ff009d, #f5b324);
+  background-image: linear-gradient(120deg, #ff009d, var(--squash)); 
+  padding-bottom: 100px;
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+  .section {
+    &.hero {
+      min-height: 816px;   
+      padding-bottom: 0;
+    }
+  }
+}

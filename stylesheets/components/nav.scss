@@ -1,0 +1,188 @@
+// .main-nav
+.main-nav {
+    list-style: none inside;
+    margin-bottom: 0;
+    position: relative;
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+    header {
+        .main-nav {
+            display: -webkit-flex;
+            display: flex;
+        }
+    }
+}
+
+// .main-nav li:first-child
+.main-nav {
+    li:first-child {
+        display: block;
+        margin-right: auto;
+        margin-bottom: 0.9em;
+        margin-top: 0.9em;
+
+        a {
+            display: block;
+            border-bottom: 0 none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo {
+            object-fit: contain;
+            height: 48px;
+            width: 119px;
+
+            img {
+                height: auto;
+                width: 100%;
+            }
+        }    
+    }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+    header {
+        .main-nav {
+            li:first-child {
+                margin-top: 26px;
+                margin-bottom: 14px;
+            }
+        }
+    }   
+}
+
+// .main-nav li:last-child
+.main-nav {   
+    li:last-child {
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: auto;
+
+        position: absolute;
+        right: 0;
+        top: 8px;
+
+        a {
+            border-bottom: 0 none;
+            font-size: 40px;
+            margin-right: 0;
+            padding-right: 0;
+            position: relative;
+        }
+    }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+    header {
+        .main-nav {
+            .mobile {
+                &:last-child {
+                    margin-right: 0;
+                    padding-right: 0;
+                }
+
+                &:nth-last-child(2) {
+                    a {
+                        margin-right: 0;
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .main-nav li
+.main-nav {  
+    li {
+        display: none;
+        float: left;
+        // margin-bottom: 0.9em;
+        // margin-top: 0.9em;
+        width: 100%;
+    }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+    header {
+        .main-nav {  
+            li {
+                display: block;
+                float: none;
+                // margin-top: 38px;
+                width: auto;
+            }
+        } 
+    } 
+}
+
+// .main-nav a
+.main-nav {     
+    a {
+        border-bottom: 1px solid #fff;
+        color:#fff;
+        font-family:'Futura W01';
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        text-decoration: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+// @media (#{$bp-larger-than-mobile}) {
+@media (#{$bp-larger-than-tablet}) {
+    header {
+        .main-nav {  
+            a {
+                border-bottom: 0;
+                margin: 16px 6px 8px 0;
+                padding: 15px 15px 15px 5px;
+            }
+        } 
+    } 
+}
+
+// JS
+.main-nav {
+    list-style: none inside;
+    margin-bottom: 0;
+    position: relative;
+
+    .mobile {
+        a {
+            display: block;
+            float: none;
+        }
+    }
+
+    &.mobile__view {
+        .mobile {
+            display: block;
+            margin-bottom: 0;
+
+            &#JoinLink {
+                border-top: 1px solid #fff;
+            }
+
+            &#ExternalLink {
+                margin-bottom: 60px;
+            }
+
+            a {
+                padding: 10px;
+            }
+        }
+    }
+}

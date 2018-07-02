@@ -1,0 +1,15 @@
+{
+  "name": "drafthouse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.0"
+  },
+  "dependencies": {
+    "parcel-plugin-handlebars": "^0.4.4"
+  }
+}

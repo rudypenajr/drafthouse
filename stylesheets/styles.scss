@@ -1,0 +1,40 @@
+// https://www.google.com/search?q=build+static+website+with+sass&client=firefox-b-1-ab&source=lnt&tbs=qdr:y&sa=X&ved=0ahUKEwic9sLsqPfbAhULiqwKHb75AVYQpwUIIQ&biw=1438&bih=872
+// https://medium.com/@chesterhow/building-a-static-site-with-parcel-part-1-de5032c6bba7
+
+
+/* Base files. */
+@import "skeleton/base/normalize";
+@import "skeleton/base/variables";
+@import "skeleton/base/functions";
+@import "skeleton/base/base-styles";
+@import "skeleton/base/utils";
+@import "skeleton/base/typography";
+
+/* Modules */
+@import "skeleton/modules/grid";
+@import "skeleton/modules/buttons";
+@import "skeleton/modules/forms";
+@import "skeleton/modules/lists";
+@import "skeleton/modules/code";
+@import "skeleton/modules/tables";
+@import "skeleton/modules/spacing";
+@import "skeleton/modules/media-queries";
+
+// Partials
+@import "base/variables";
+@import "partials/header";
+@import "partials/banner";
+@import "partials/waitlist";
+
+// Components
+@import "components/form";
+@import "components/spinner";
+@import "components/thanks";
+@import "components/hamburger";
+@import "components/nav";
+
+// Sections
+@import "sections/top";
+@import "sections/middle";
+@import "sections/bottom";
+@import "sections/sections";
