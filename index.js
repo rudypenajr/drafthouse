@@ -1,23 +1,26 @@
-import './stylesheets/styles.scss'
+'use strict'
+// import './stylesheets/styles.scss'
 
 // Logic:
 // - Mobile Navigation
 // - Form Validation (inputs have been populated)
 // - Input Validation: First/Last Name
 // - Input Validation: Email
+// - Scroll to Section
 
 $( document ).ready(function() {
     // Mobile Navigation
-    $('.nav__icon').click(function(e) {
+    const $navIcon = $('.nav__icon')
+    $navIcon.click(function(e) {
         e.preventDefault();
         $('.main-nav').toggleClass('mobile__view')
     })
 
     // Form Validation (inputs have been populated)
-    var $button = $('.form__submission button');
-    var $allFields = $('.form__block').not('.form__submission')
-    var $reqs = $('.validation')
-    var validateForm = function() {
+    const $button = $('.form__submission button');
+    const $allFields = $('.form__block').not('.form__submission')
+    const $reqs = $('.validation')
+    const validateForm = function() {
         var valid = true;
         $.each($allFields, function(idx, el) {
             var $input = $(el).find('input')
@@ -98,7 +101,7 @@ $( document ).ready(function() {
         blurNameCb(e, 1)
     })
 
-    // - Input Validation: Email
+    // Input Validation: Email
     const validEmailText = 'Appears this is not a valid email.'
     const emailField = $('input#email_address')
     const validEmail = function(val) {
@@ -126,4 +129,20 @@ $( document ).ready(function() {
         }
     }
     emailField.blur(blurEmailCb)
+
+
+    // - Scroll to Section
+    const scrollToSection = function(e, $element) {
+        e.preventDefault()
+
+        $('html, body').animate({
+            scrollTop: $element.offset().top
+        }, 1000)
+    }
+    $('#JoinLink a').click(function(e) {
+        scrollToSection(e, $('.middle'))        
+    })
+    $('#FAQLink a').click(function(e) {
+        scrollToSection(e, $('.bottom .row'))        
+    })
 });

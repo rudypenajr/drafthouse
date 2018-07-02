@@ -103,86 +103,21 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({13:[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],12:[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":13}],6:[function(require,module,exports) {
-
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":12}],5:[function(require,module,exports) {
+})({8:[function(require,module,exports) {
 'use strict';
-
-require('./stylesheets/styles.scss');
+// import './stylesheets/styles.scss'
 
 // Logic:
 // - Mobile Navigation
 // - Form Validation (inputs have been populated)
 // - Input Validation: First/Last Name
 // - Input Validation: Email
+// - Scroll to Section
 
 $(document).ready(function () {
     // Mobile Navigation
-    $('.nav__icon').click(function (e) {
+    var $navIcon = $('.nav__icon');
+    $navIcon.click(function (e) {
         e.preventDefault();
         $('.main-nav').toggleClass('mobile__view');
     });
@@ -273,7 +208,7 @@ $(document).ready(function () {
         blurNameCb(e, 1);
     });
 
-    // - Input Validation: Email
+    // Input Validation: Email
     var validEmailText = 'Appears this is not a valid email.';
     var emailField = $('input#email_address');
     var validEmail = function validEmail(val) {
@@ -301,8 +236,23 @@ $(document).ready(function () {
         }
     };
     emailField.blur(blurEmailCb);
+
+    // - Scroll to Section
+    var scrollToSection = function scrollToSection(e, $element) {
+        e.preventDefault();
+
+        $('html, body').animate({
+            scrollTop: $element.offset().top
+        }, 1000);
+    };
+    $('#JoinLink a').click(function (e) {
+        scrollToSection(e, $('.middle'));
+    });
+    $('#FAQLink a').click(function (e) {
+        scrollToSection(e, $('.bottom .row'));
+    });
 });
-},{"./stylesheets/styles.scss":6}],22:[function(require,module,exports) {
+},{}],18:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -331,7 +281,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50288' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '54663' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -472,5 +422,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[22,5], null)
+},{}]},{},[18,8], null)
 //# sourceMappingURL=/drafthouse.ffd920b9.map
