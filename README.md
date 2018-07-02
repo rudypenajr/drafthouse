@@ -19,19 +19,10 @@ Validation was added to make sure all fields were populated properly. A secondar
 
 On form submission, I placed a `setTimeout` for the sake of UI purposes to show a loading indicator followed by a success message.
 
-
-
 ### Known Issues:
  - Safari has issues with `clip-path`. Works fine for Chrome and Firefox. 
 
-### Resolved Issued:
-- UI for mobile navigation needs some popping!
-- Form validation:
-    - No random characters in names
-    - Email proper validation
- - Alamo Logo Linkable
-
-### Like To Have
+### Nice To Have
 Being that this is my first time using Parcel, I lacked the proper understanding for incorporating `handlebars` and properly using it. If I had I would of setup something like this:
 
 ```
