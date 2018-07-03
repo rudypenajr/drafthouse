@@ -1,5 +1,5 @@
 'use strict'
-// import './stylesheets/styles.scss'
+import './stylesheets/styles.scss'
 
 // Logic:
 // - Mobile Navigation

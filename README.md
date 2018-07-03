@@ -1,4 +1,5 @@
 ### Development
+- Run `npm install`
 - Run `parcel index.html --out-dir public -p 3000`
 
 ### To-Do:
@@ -10,7 +11,7 @@
 Used [Skeleton](http://getskeleton.com/) as a base for this project.
 
 ###### Header
-I added the `srcset` to the Logo Link since the `2x` and `3x` pngs were provided. 
+I added the `srcset` to the Logo since the `2x` and `3x` pngs were provided. 
 
 ###### Header (Mobile)
 The famous hamburger icon should appear on the right hand side for mobile experiences. User will be able to `click` and the navigation links will appear in a dropdown fashion.

@@ -128,6 +128,7 @@
 @media (#{$bp-larger-than-tablet}) {
     .waitlist__form {
         .form__final {
+            margin-top: -180px;
             padding: 0;
         }
     }
