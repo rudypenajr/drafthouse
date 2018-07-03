@@ -1,6 +1,6 @@
 ### Development
 - Run `npm install`
-- Run `parcel index.html -p 3000`
+- Run `parcel index.html -p 3000` or `npm start`
 
 ### To-Do:
 - [x] Add basic validation to the form and on a successful submit display a success message to the user, no need to POST the data anywhere.
