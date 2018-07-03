@@ -103,7 +103,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({13:[function(require,module,exports) {
+})({34:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -133,7 +133,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],12:[function(require,module,exports) {
+},{}],32:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -164,50 +164,162 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":13}],9:[function(require,module,exports) {
+},{"./bundle-url":34}],28:[function(require,module,exports) {
 
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":12}],5:[function(require,module,exports) {
+},{"_css_loader":32}],8:[function(require,module,exports) {
 'use strict';
 
 require('./stylesheets/styles.scss');
 
-// (function() {
-//     let submission = function() {
-//         alert("hi")
-//     }
-//     document.getElementsByTagName('form')[0].onsubmit = submission
-// })()
+// Logic:
+// - Mobile Navigation
+// - Form Validation (inputs have been populated)
+// - Input Validation: First/Last Name
+// - Input Validation: Email
+// - Scroll to Section
 
 $(document).ready(function () {
+    // Mobile Navigation
+    var $navIcon = $('.nav__icon');
+    $navIcon.click(function (e) {
+        e.preventDefault();
+        $('.main-nav').toggleClass('mobile__view');
+    });
+
+    // Form Validation (inputs have been populated)
     var $button = $('.form__submission button');
     var $allFields = $('.form__block').not('.form__submission');
-    var $reqs = $('.required');
-
+    var $reqs = $('.validation');
     var validateForm = function validateForm() {
+        var valid = true;
         $.each($allFields, function (idx, el) {
             var $input = $(el).find('input');
 
+            // check for checkbox
             if ($input.length === 0) {
                 $input = $(el).find('select');
-            }
 
-            if ($input.val() === '') {
-                var $required = $($reqs.get(idx));
-                $required.removeClass('hide');
+                if ($input.find(':selected').val() === "0") {
+                    var $required = $($reqs.get(idx));
+                    $required.removeClass('validation__hide');
+                    valid = false;
+                }
+            } else {
+                if ($input.val() === '') {
+                    var $required = $($reqs.get(idx));
+                    $required.removeClass('validation__hide');
+                    valid = false;
+                }
             }
         });
+
+        return valid;
     };
 
     $button.click(function (e) {
         e.preventDefault();
+        var validInputs = validateForm();
+        if (validInputs) {
+            $('.waitlist__form form').hide();
+            $('.waitlist__form .form__spinner').show();
 
-        var valid = validateForm();
+            setTimeout(function () {
+                $('.waitlist__form .form__spinner').hide();
+            }, 3000);
+
+            setTimeout(function () {
+                $('.waitlist__form .form__final').show();
+            }, 3001);
+        }
+    });
+
+    // Input Validation: First/Last Name
+    var originalText = 'This field is required.';
+    var validFirstNameText = 'Appears this is not a valid first name.';
+    var firstnameField = $('input#first_name');
+    var validName = function validName(val) {
+        return (/^[A-Za-z\s]+$/.test(val)
+        );
+    };
+    var blurNameCb = function blurNameCb(e, reqIdx) {
+        var $target = $(e.target);
+        console.log(e);
+
+        if ($target.val() === '') {
+            return;
+        }
+
+        var $required = $($reqs.get(reqIdx));
+        var valid = validName($target.val());
+
+        if (!valid) {
+            $required.text(validFirstNameText);
+            $required.removeClass('validation__hide');
+        }
+
+        if (valid && $required.text() === validFirstNameText) {
+            $required.text(originalText);
+            $required.addClass('validation__hide');
+        }
+    };
+
+    firstnameField.blur(function (e) {
+        blurNameCb(e, 0);
+    });
+
+    var lastnameField = $('input#last_name');
+    lastnameField.blur(function (e) {
+        blurNameCb(e, 1);
+    });
+
+    // Input Validation: Email
+    var validEmailText = 'Appears this is not a valid email.';
+    var emailField = $('input#email_address');
+    var validEmail = function validEmail(val) {
+        var filter = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+        return filter.test(val);
+    };
+    var blurEmailCb = function blurEmailCb(e) {
+        var $target = $(e.target);
+
+        if ($target.val() === '') {
+            return;
+        }
+
+        var $required = $($reqs.get(2));
+        var valid = validEmail($target.val());
+
+        if (!valid) {
+            $required.text(validEmailText);
+            $required.removeClass('validation__hide');
+        }
+
+        if (valid && $required.text() === validEmailText) {
+            $required.text(originalText);
+            $required.addClass('validation__hide');
+        }
+    };
+    emailField.blur(blurEmailCb);
+
+    // - Scroll to Section
+    var scrollToSection = function scrollToSection(e, $element) {
+        e.preventDefault();
+
+        $('html, body').animate({
+            scrollTop: $element.offset().top
+        }, 1000);
+    };
+    $('#JoinLink a').click(function (e) {
+        scrollToSection(e, $('.middle'));
+    });
+    $('#FAQLink a').click(function (e) {
+        scrollToSection(e, $('.bottom .row'));
     });
 });
-},{"./stylesheets/styles.scss":9}],12:[function(require,module,exports) {
+},{"./stylesheets/styles.scss":28}],36:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -236,7 +348,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64729' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '53911' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -377,5 +489,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[12,5], null)
+},{}]},{},[36,8], null)
 //# sourceMappingURL=/drafthouse.ffd920b9.map
